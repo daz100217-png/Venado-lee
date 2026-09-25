@@ -70,7 +70,7 @@ function setupLogin(){let role=document.getElementById('role').value, sel=docume
 document.getElementById('role').addEventListener('change',setupLogin);setupLogin();
 
 function login(){current=document.getElementById('loginUser').value;let role=document.getElementById('role').value;document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('userLabel').textContent=role==='teacher'?'José Fabián Díaz Serrano':db.students.find(s=>s.id===current).name;document.getElementById('roleLabel').textContent=role==='teacher'?'Docente · Escuela Secundaria Técnica #9':'Estudiante';buildNav(role);role==='teacher'?show('dashboard'):show('studentHome')}
-function buildNav(role){document.getElementById('nav').innerHTML=role==='teacher'?'<button class="tab active" onclick="show(\\'dashboard\\')">📊 Panel</button><button class="tab" onclick="show(\\'students\\')">👥 Estudiantes</button><button class="tab" onclick="show(\\'dashboard\\')">📄 Reportes</button>':'<button class="tab active" onclick="show(\\'studentHome\\')">🏠 Inicio</button><button class="tab" onclick="show(\\'read\\')">📖 Leer</button><button class="tab" onclick="show(\\'studentProgress\\')">📊 Progreso</button><button class="tab" onclick="show(\\'badges\\')">🏆 Insignias</button>'}
+function buildNav(role){document.getElementById('nav').innerHTML='<button class="tab active" onclick="show(\'dashboard\');render()">Inicio</button>';}
 function show(id){document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');render();}
 
 function readingsFor(id){return db.readings[id]||[]}
